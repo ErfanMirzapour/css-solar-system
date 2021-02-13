@@ -1,74 +1,61 @@
 :root {
-   /* --max-circuit-size: 3200px; */
    --real-au: 152.1px;
-   --neptune-real-circuit-size: 8951px; /* million km */
+   --neptune-real-circuit-size: 8951px; /* px ~ million km */
 
-   --ratio: 3;
-   --au: calc(var(--real-au) * var(--ratio));
+   --orbit-base-time: 0.08s;
+   --scale: 3;
    --moon-distance-multiplier: 100;
+   --au: calc(var(--scale) * var(--real-au));
+   --planets-magnifier: calc(var(--scale) * 1000);
+   --sun-magnifier: calc(var(--scale) * 50);
 
-   --mercury-circuit-size: calc(var(--au) * 0.4); /* million km */
-   --venus-circuit-size: calc(var(--au) * 0.7); /* million km */
-   --earth-circuit-size: var(--au); /* million km */
-   --moon-circuit-size: calc(
-      var(--au) * 0.0025 * --moon-distance-multiplier
-   ); /* million km */
-   --mars-circuit-size: calc(var(--au) * 1.5); /* million km */
-   --jupiter-circuit-size: calc(var(--au) * 5.2); /* million km */
-   --saturn-circuit-size: calc(var(--au) * 9.5); /* million km */
-   --uranus-circuit-size: calc(var(--au) * 19.2); /* million km */
+   --mercury-circuit-size: calc(var(--au) * 0.4);
+   --venus-circuit-size: calc(var(--au) * 0.7);
+   --earth-circuit-size: var(--au);
+   --moon-circuit-size: calc(var(--au) * 0.0025 * --moon-distance-multiplier);
+   --mars-circuit-size: calc(var(--au) * 1.5);
+   --jupiter-circuit-size: calc(var(--au) * 5.2);
+   --saturn-circuit-size: calc(var(--au) * 9.5);
+   --uranus-circuit-size: calc(var(--au) * 19.2);
    --neptune-circuit-size: calc(var(--au) * 30.1);
 
-   --speed: 0.08s;
-
-   --mercury-orbit-duration: calc(115.88 * var(--speed));
-   --venus-orbit-duration: calc(224.7 * var(--speed));
-   --earth-orbit-duration: calc(365.25 * var(--speed));
-   --mars-orbit-duration: calc(779.96 * var(--speed));
-   --jupiter-orbit-duration: calc(398.88 * var(--speed));
-   --saturn-orbit-duration: calc(378.09 * var(--speed));
-   --uranus-orbit-duration: calc(369.66 * var(--speed));
-   --neptune-orbit-duration: calc(367.49 * var(--speed));
-
-   --planets-magnifier: calc(var(--ratio) * 1000);
-   --sun-magnifier: calc(var(--ratio) * 50);
-
    --sun-size: calc(0.696px * var(--sun-magnifier));
-   --sun-color: #f5ea6f;
+   --mercury-orbit-duration: calc(115.88 * var(--orbit-base-time));
+   --venus-orbit-duration: calc(224.7 * var(--orbit-base-time));
+   --earth-orbit-duration: calc(365.25 * var(--orbit-base-time));
+   --mars-orbit-duration: calc(779.96 * var(--orbit-base-time));
+   --jupiter-orbit-duration: calc(398.88 * var(--orbit-base-time));
+   --saturn-orbit-duration: calc(378.09 * var(--orbit-base-time));
+   --uranus-orbit-duration: calc(369.66 * var(--orbit-base-time));
+   --neptune-orbit-duration: calc(367.49 * var(--orbit-base-time));
 
-   --neptune-size: 30px;
+   --sun-color: #f5ea6f;
+   --mercury-color: #737077;
+   --venus-color: #edd7bf;
+   --earth-color: #4fa2f5;
+   --mars-color: #f4845e;
+   --jupiter-color: #ab8b74;
+   --saturn-color: #e1be78;
+   --uranus-color: #c6ecf0;
    --neptune-color: #3347b4;
 
-   --uranus-size: 40px;
-   --uranus-color: #c6ecf0;
-
-   --saturn-size: 40px;
-   --saturn-color: #e1be78;
-
-   --jupiter-size: 60px;
-   --jupiter-color: #ab8b74;
-
-   --mars-size: calc(0.00678px * var(--planets-magnifier));
-   --mars-color: #f4845e;
-
-   --moon-size: calc(0.00347px * var(--planets-magnifier));
-   --earth-size: calc(0.012742px * var(--planets-magnifier));
-   --earth-color: #4fa2f5;
-
-   --venus-size: calc(0.0121px * var(--planets-magnifier));
-   --venus-color: #edd7bf;
-
    --mercury-size: calc(0.00488px * var(--planets-magnifier));
-   --mercury-color: #737077;
+   --venus-size: calc(0.0121px * var(--planets-magnifier));
+   --earth-size: calc(0.012742px * var(--planets-magnifier));
+   --moon-size: calc(0.00347px * var(--planets-magnifier));
+   --mars-size: calc(0.00678px * var(--planets-magnifier));
+   --jupiter-size: 60px;
+   --saturn-size: 40px;
+   --uranus-size: 40px;
+   --neptune-size: 30px;
 }
 
-@keyframes orbit {
-   from {
-      transform: translate(-50%, -50%) rotate(0);
-   }
-   to {
-      transform: translate(-50%, -50%) rotate(360deg);
-   }
+body {
+   width: 100%;
+   margin: 0 auto;
+   height: 100vh;
+   background: radial-gradient(ellipse at bottom, #1c2837 0%, #050608 100%);
+   overflow-y: hidden;
 }
 
 .sun {
@@ -105,116 +92,13 @@
    transform: translateX(-50%);
 }
 
-.neptune {
-   width: var(--neptune-circuit-size);
-   height: var(--neptune-circuit-size);
-   animation-duration: var(--neptune-orbit-duration);
-}
-
-.neptune::before {
-   background-color: var(--neptune-color);
-   width: var(--neptune-size);
-   height: var(--neptune-size);
-   top: calc(var(--neptune-size) / -2);
-}
-
-.uranus {
-   width: var(--uranus-circuit-size);
-   height: var(--uranus-circuit-size);
-   animation-duration: var(--uranus-orbit-duration);
-}
-
-.uranus::before {
-   background-color: var(--uranus-color);
-   width: var(--uranus-size);
-   height: var(--uranus-size);
-   top: calc(var(--uranus-size) / -2);
-}
-
-.saturn {
-   width: var(--saturn-circuit-size);
-   height: var(--saturn-circuit-size);
-   animation-duration: var(--saturn-orbit-duration);
-}
-
-.saturn::before {
-   background-color: var(--saturn-color);
-   width: var(--saturn-size);
-   height: var(--saturn-size);
-   top: calc(var(--saturn-size) / -2);
-}
-
-.jupiter {
-   width: var(--jupiter-circuit-size);
-   height: var(--jupiter-circuit-size);
-   animation-duration: var(--jupiter-orbit-duration);
-}
-
-.jupiter::before {
-   background-color: var(--jupiter-color);
-   width: var(--jupiter-size);
-   height: var(--jupiter-size);
-   top: calc(var(--jupiter-size) / -2);
-}
-
-.mars {
-   width: var(--mars-circuit-size);
-   height: var(--mars-circuit-size);
-   animation-duration: var(--mars-orbit-duration);
-}
-
-.mars::before {
-   /* background-color: var(--mars-color); */
-   background-image: url('https://www.pngkey.com/png/full/473-4735187_planet-mars-mars-transparent-background.png');
-   background-size: cover;
-   width: var(--mars-size);
-   height: var(--mars-size);
-   top: calc(var(--mars-size) / -2);
-   box-shadow: inset 0 9px 0 -2px rgb(0 0 0 / 55%);
-}
-
-.earth {
-   width: var(--earth-circuit-size);
-   height: var(--earth-circuit-size);
-   animation-duration: var(--earth-orbit-duration);
-}
-
-.earth::before {
-   /* background-color: var(--earth-color); */
-   background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/22/Earth_Western_Hemisphere_transparent_background.png');
-   background-size: cover;
-   width: var(--earth-size);
-   height: var(--earth-size);
-   top: calc(var(--earth-size) / -2);
-   box-shadow: inset 0 19px 0 -7px rgb(0 0 0 / 55%);
-}
-
-.earth::after {
-   position: absolute;
-   content: '';
-   height: var(--moon-size);
-   width: var(--moon-size);
-   left: 50%;
-   top: 0px;
-   border-radius: 100px;
-   box-shadow: 0 -30px 0 0 grey;
-   animation: orbit 2.6s linear infinite;
-}
-
-.venus {
-   width: var(--venus-circuit-size);
-   height: var(--venus-circuit-size);
-   animation-duration: var(--venus-orbit-duration);
-}
-
-.venus::before {
-   /* background-color: var(--venus-color); */
-   background-image: url('https://www.nicepng.com/png/detail/4-43998_planet-venus-planet-no-background.png');
-   background-size: cover;
-   width: var(--venus-size);
-   height: var(--venus-size);
-   top: calc(var(--venus-size) / -2);
-   box-shadow: inset 0 16px 0 -5px rgb(0 0 0 / 55%);
+@keyframes orbit {
+   from {
+      transform: translate(-50%, -50%) rotate(0);
+   }
+   to {
+      transform: translate(-50%, -50%) rotate(360deg);
+   }
 }
 
 .mercury {
@@ -233,14 +117,120 @@
    box-shadow: inset 0 6px 0 -1.5px rgb(0 0 0 / 55%);
 }
 
-body {
-   width: 100%;
-   margin: 0 auto;
-   height: 100vh;
-   background: radial-gradient(ellipse at bottom, #1c2837 0%, #050608 100%);
-   overflow-y: hidden;
+.venus {
+   width: var(--venus-circuit-size);
+   height: var(--venus-circuit-size);
+   animation-duration: var(--venus-orbit-duration);
 }
 
+.venus::before {
+   /* background-color: var(--venus-color); */
+   background-image: url('https://www.nicepng.com/png/detail/4-43998_planet-venus-planet-no-background.png');
+   background-size: cover;
+   width: var(--venus-size);
+   height: var(--venus-size);
+   top: calc(var(--venus-size) / -2);
+   box-shadow: inset 0 16px 0 -5px rgb(0 0 0 / 55%);
+}
+
+.earth {
+   width: var(--earth-circuit-size);
+   height: var(--earth-circuit-size);
+   animation-duration: var(--earth-orbit-duration);
+}
+
+.earth::before {
+   /* background-color: var(--earth-color); */
+   background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/22/Earth_Western_Hemisphere_transparent_background.png');
+   background-size: cover;
+   width: var(--earth-size);
+   height: var(--earth-size);
+   top: calc(var(--earth-size) / -2);
+   box-shadow: inset 0 19px 0 -7px rgb(0 0 0 / 55%);
+}
+
+/* moon */
+.earth::after {
+   position: absolute;
+   content: '';
+   height: var(--moon-size);
+   width: var(--moon-size);
+   left: 50%;
+   top: 0px;
+   border-radius: 100px;
+   box-shadow: 0 -30px 0 0 grey;
+   animation: orbit 2.6s linear infinite;
+}
+
+.mars {
+   width: var(--mars-circuit-size);
+   height: var(--mars-circuit-size);
+   animation-duration: var(--mars-orbit-duration);
+}
+
+.mars::before {
+   /* background-color: var(--mars-color); */
+   background-image: url('https://www.pngkey.com/png/full/473-4735187_planet-mars-mars-transparent-background.png');
+   background-size: cover;
+   width: var(--mars-size);
+   height: var(--mars-size);
+   top: calc(var(--mars-size) / -2);
+   box-shadow: inset 0 9px 0 -2px rgb(0 0 0 / 55%);
+}
+
+.jupiter {
+   width: var(--jupiter-circuit-size);
+   height: var(--jupiter-circuit-size);
+   animation-duration: var(--jupiter-orbit-duration);
+}
+
+.jupiter::before {
+   background-color: var(--jupiter-color);
+   width: var(--jupiter-size);
+   height: var(--jupiter-size);
+   top: calc(var(--jupiter-size) / -2);
+}
+
+.saturn {
+   width: var(--saturn-circuit-size);
+   height: var(--saturn-circuit-size);
+   animation-duration: var(--saturn-orbit-duration);
+}
+
+.saturn::before {
+   background-color: var(--saturn-color);
+   width: var(--saturn-size);
+   height: var(--saturn-size);
+   top: calc(var(--saturn-size) / -2);
+}
+
+.uranus {
+   width: var(--uranus-circuit-size);
+   height: var(--uranus-circuit-size);
+   animation-duration: var(--uranus-orbit-duration);
+}
+
+.uranus::before {
+   background-color: var(--uranus-color);
+   width: var(--uranus-size);
+   height: var(--uranus-size);
+   top: calc(var(--uranus-size) / -2);
+}
+
+.neptune {
+   width: var(--neptune-circuit-size);
+   height: var(--neptune-circuit-size);
+   animation-duration: var(--neptune-orbit-duration);
+}
+
+.neptune::before {
+   background-color: var(--neptune-color);
+   width: var(--neptune-size);
+   height: var(--neptune-size);
+   top: calc(var(--neptune-size) / -2);
+}
+
+/* background stars */
 body::after {
    content: '';
    position: absolute;
