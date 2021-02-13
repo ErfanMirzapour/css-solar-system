@@ -14,7 +14,7 @@
    --uranus-circuit-size: calc(var(--au) * 19.2); /* million km */
    --neptune-circuit-size: calc(var(--au) * 30.1);
 
-   --speed: 0.1s;
+   --speed: 0.3s;
 
    --mercury-orbit-duration: calc(115.88 * var(--speed));
    --venus-orbit-duration: calc(224.7 * var(--speed));
@@ -86,7 +86,7 @@ body {
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
-   border: 1px solid transparent;
+   border: 1px solid rgb(255, 255, 255, 0.2);
    border-radius: 50%;
    animation-name: orbit;
    animation-iteration-count: infinite;
@@ -164,6 +164,7 @@ body {
    width: var(--mars-size);
    height: var(--mars-size);
    top: calc(var(--mars-size) / -2);
+   box-shadow: inset 0 15px 0 -3px rgb(0 0 0 / 25%);
 }
 
 .earth {
@@ -177,6 +178,7 @@ body {
    width: var(--earth-size);
    height: var(--earth-size);
    top: calc(var(--earth-size) / -2);
+   box-shadow: inset 0 28px 0 -10px rgb(0 0 0 / 25%);
 }
 
 .venus {
@@ -190,6 +192,7 @@ body {
    width: var(--venus-size);
    height: var(--venus-size);
    top: calc(var(--venus-size) / -2);
+   box-shadow: inset 0 28px 0 -10px rgb(0 0 0 / 25%);
 }
 
 .mercury {
@@ -203,4 +206,5 @@ body {
    width: var(--mercury-size);
    height: var(--mercury-size);
    top: calc(var(--mercury-size) / -2);
+   box-shadow: inset 0 20px 0 -4px rgb(0 0 0 / 25%);
 }
