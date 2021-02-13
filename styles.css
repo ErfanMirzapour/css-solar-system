@@ -3,7 +3,7 @@
    --real-au: 152.1px;
    --neptune-real-circuit-size: 8951px; /* million km */
 
-   --ratio: 4;
+   --ratio: 3;
    --au: calc(var(--real-au) * var(--ratio));
 
    --mercury-circuit-size: calc(var(--au) * 0.4); /* million km */
@@ -161,7 +161,7 @@
    width: var(--mars-size);
    height: var(--mars-size);
    top: calc(var(--mars-size) / -2);
-   box-shadow: inset 0 15px 0 -3px rgb(0 0 0 / 25%);
+   box-shadow: inset 0 9px 0 -2px rgb(0 0 0 / 55%);
 }
 
 .earth {
@@ -175,7 +175,7 @@
    width: var(--earth-size);
    height: var(--earth-size);
    top: calc(var(--earth-size) / -2);
-   box-shadow: inset 0 28px 0 -10px rgb(0 0 0 / 25%);
+   box-shadow: inset 0 19px 0 -7px rgb(0 0 0 / 55%);
 }
 
 .venus {
@@ -189,7 +189,7 @@
    width: var(--venus-size);
    height: var(--venus-size);
    top: calc(var(--venus-size) / -2);
-   box-shadow: inset 0 28px 0 -10px rgb(0 0 0 / 25%);
+   box-shadow: inset 0 16px 0 -5px rgb(0 0 0 / 55%);
 }
 
 .mercury {
@@ -203,7 +203,7 @@
    width: var(--mercury-size);
    height: var(--mercury-size);
    top: calc(var(--mercury-size) / -2);
-   box-shadow: inset 0 20px 0 -4px rgb(0 0 0 / 25%);
+   box-shadow: inset 0 13px 0 -3.5px rgb(0 0 0 / 55%);
 }
 
 body {
@@ -211,6 +211,7 @@ body {
    margin: 0 auto;
    height: 100vh;
    background: radial-gradient(ellipse at bottom, #1c2837 0%, #050608 100%);
+   overflow-y: hidden;
 }
 
 body::after {
