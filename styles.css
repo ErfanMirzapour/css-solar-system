@@ -1,6 +1,5 @@
 :root {
-   --real-au: 152.1px;
-   --neptune-real-circuit-size: 8951px; /* px ~ million km */
+   --real-au: 152.1px; /* px ~ million km */
 
    --orbit-base-time: 0.08s;
    --scale: 3;
@@ -9,6 +8,7 @@
    --planets-magnifier: calc(var(--scale) * 1000);
    --sun-magnifier: calc(var(--scale) * 50);
 
+   --sun-size: calc(0.696px * var(--sun-magnifier));
    --mercury-circuit-size: calc(var(--au) * 0.4);
    --venus-circuit-size: calc(var(--au) * 0.7);
    --earth-circuit-size: var(--au);
@@ -19,7 +19,6 @@
    --uranus-circuit-size: calc(var(--au) * 19.2);
    --neptune-circuit-size: calc(var(--au) * 30.1);
 
-   --sun-size: calc(0.696px * var(--sun-magnifier));
    --mercury-orbit-duration: calc(115.88 * var(--orbit-base-time));
    --venus-orbit-duration: calc(224.7 * var(--orbit-base-time));
    --earth-orbit-duration: calc(365.25 * var(--orbit-base-time));
@@ -60,7 +59,7 @@ body {
 
 .sun {
    /* background-color: var(--sun-color); */
-   background-image: url('http://assets.stickpng.com/images/580b585b2edbce24c47b270f.png');
+   background-image: url('images/compressed-2bwb.png');
    background-size: contain;
    width: var(--sun-size);
    height: var(--sun-size);
@@ -109,7 +108,7 @@ body {
 
 .mercury::before {
    /* background-color: var(--mercury-color); */
-   background-image: url('https://i0.wp.com/freepngimages.com/wp-content/uploads/2016/05/planet-mercury-transparent-background.png?fit=680%2C680');
+   background-image: url('images/compressed-cckp.png');
    background-size: cover;
    width: var(--mercury-size);
    height: var(--mercury-size);
@@ -125,7 +124,7 @@ body {
 
 .venus::before {
    /* background-color: var(--venus-color); */
-   background-image: url('https://www.nicepng.com/png/detail/4-43998_planet-venus-planet-no-background.png');
+   background-image: url('images/4-43998_planet-venus-planet-no-background.png');
    background-size: cover;
    width: var(--venus-size);
    height: var(--venus-size);
@@ -141,7 +140,7 @@ body {
 
 .earth::before {
    /* background-color: var(--earth-color); */
-   background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/22/Earth_Western_Hemisphere_transparent_background.png');
+   background-image: url('images/Earth_Western_Hemisphere_transparent_background-min.png');
    background-size: cover;
    width: var(--earth-size);
    height: var(--earth-size);
@@ -170,7 +169,7 @@ body {
 
 .mars::before {
    /* background-color: var(--mars-color); */
-   background-image: url('https://www.pngkey.com/png/full/473-4735187_planet-mars-mars-transparent-background.png');
+   background-image: url('images/compressed-iveu.png');
    background-size: cover;
    width: var(--mars-size);
    height: var(--mars-size);
